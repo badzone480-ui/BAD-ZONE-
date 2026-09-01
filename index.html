@@ -1,10 +1,188 @@
-<!D<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="sw">
 <head>
-    <title>BÃD ZÕÑÊ</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BÃD ZONE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+}
+
+header{
+    padding:18px;
+    text-align:center;
+    border-bottom:1px solid #222;
+    position:sticky;
+    top:0;
+    background:#050505;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    padding:18px;
+}
+
+.welcome{
+    padding:25px 5px;
+}
+
+.welcome h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.welcome p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.post-box{
+    background:#111;
+    border:1px solid #222;
+    border-radius:15px;
+    padding:18px;
+    margin-top:20px;
+}
+
+.post-box textarea{
+    width:100%;
+    height:100px;
+    background:#080808;
+    color:white;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:12px;
+    resize:none;
+    outline:none;
+}
+
+.post-btn{
+    margin-top:12px;
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-around;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#0b0b0b;
+    border-top:1px solid #222;
+    padding:14px 5px;
+}
+
+.nav span{
+    color:#aaa;
+    font-size:13px;
+}
+
+.nav span:first-child{
+    color:white;
+}
+
+footer{
+    height:80px;
+}
+</style>
 </head>
+
 <body>
-    <h1>Welcome to BÃD ZONE</h1>
-    <p>Social media yako iko hapa.</p>
+
+<header>
+    <div class="logo">BÃD ZONE</div>
+</header>
+
+<div class="container">
+
+    <section class="welcome">
+        <h1>Karibu BÃD ZONE 👊</h1>
+        <p>
+            Sehemu yako mpya ya kushirikiana, ku-post,
+            kuwasiliana na kujenga community yako.
+        </p>
+    </section>
+
+    <div class="post-box">
+        <textarea id="postText" placeholder="Unafikiria nini?"></textarea>
+        <button class="post-btn" onclick="createPost()">
+            POST
+        </button>
+    </div>
+
+    <div id="posts"></div>
+
+    <footer></footer>
+
+</div>
+
+<div class="nav">
+    <span>⌂ Home</span>
+    <span>🔍 Search</span>
+    <span>➕ Post</span>
+    <span>♡ Likes</span>
+    <span>👤 Profile</span>
+</div>
+
+<script>
+function createPost(){
+
+    const text = document.getElementById("postText").value;
+
+    if(text.trim() === ""){
+        alert("Andika kitu kwanza.");
+        return;
+    }
+
+    const post = document.createElement("div");
+
+    post.style.background = "#111";
+    post.style.border = "1px solid #222";
+    post.style.borderRadius = "15px";
+    post.style.padding = "18px";
+    post.style.marginTop = "15px";
+
+    post.innerHTML = `
+        <strong>BÃD ZONE User</strong>
+        <p style="margin-top:12px;color:#ddd;">
+            ${text}
+        </p>
+        <div style="margin-top:15px;color:#aaa;">
+            ♡ Like &nbsp;&nbsp; 💬 Comment
+        </div>
+    `;
+
+    document.getElementById("posts").prepend(post);
+
+    document.getElementById("postText").value = "";
+}
+</script>
+
 </body>
 </html> 
